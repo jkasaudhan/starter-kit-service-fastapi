@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./todos.db
+      - ENVIRONMENT=development
+      - DEBUG=true
+    volumes:
+      - ./:/app
+    command: poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Uncomment for PostgreSQL database
+  # db:
+  #   image: postgres:13
+  #   environment:
+  #     POSTGRES_DB: todos
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+# volumes:
+#   postgres_data:

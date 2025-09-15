@@ -1,0 +1,29 @@
+{
+	"name": "FastAPI Todo Starter",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "web",
+	"workspaceFolder": "/app",
+	"settings": {
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": false,
+		"python.linting.flake8Enabled": true,
+		"python.linting.mypyEnabled": true,
+		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		}
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"ms-azuretools.vscode-docker"
+	],
+	"forwardPorts": [
+		8000
+	],
+	"postCreateCommand": "poetry install --no-interaction --no-ansi"
+}
